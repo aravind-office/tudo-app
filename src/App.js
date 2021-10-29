@@ -1,23 +1,38 @@
 import logo from './logo.svg';
 import './App.css';
-
+import {useEffect, useState} from 'react' 
+import AddTask from './page/AddTask';
+import TaskLists from './page/TaskLists';
+import TaskDetails from './page/TaskDetails';
 function App() {
+  const [taskData,setTaskData]=useState([
+    {
+      id:123,
+      title:"React",
+      description:"session on react"
+    },
+    {
+      id:3,
+      title:"js",
+      description:"session on react"
+    },{
+      id:23,
+      title:"css",
+      description:"session on react"
+    },{
+      id:12,
+      title:"html",
+      description:"session on react"
+    },
+
+  ])
+
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <AddTask taskData={taskData} setTaskData={setTaskData} />
+      <TaskLists taskData={taskData} setTaskData={setTaskData}/>
+      {/* <TaskDetails/> */}
     </div>
   );
 }
